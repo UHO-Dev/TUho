@@ -1,21 +1,29 @@
-# TUho### Pasos para correr el proyecto y activar el entorno virtual
+# TUho### Pasos para correr el proyecto
 
 1. Clona el repositorio en tu máquina local:
     ```
-    git clone https://github.com/tu-usuario/tu-proyecto.git
+    git clone [Url del repositorio]
     ```
 
 2. Navega al directorio del proyecto:
     ```
-    cd tu-proyecto
+    cd [Nombre del repo]
     ```
 
 3. Crea y activa el entorno virtual:
+    Crear:
     ```
     python -m venv venv
-    source venv/bin/activate
+    ```
+ Activar:
+    En windows:   
+    ```    
+    source venv/Scripts/activate.bat
+    ```
+    En Linux y Mac:
     ```
 
+    ```
 4. Instala las dependencias del proyecto:
     ```
     pip install -r requirements.txt
@@ -23,8 +31,9 @@
 
 5. Inicializa el proyecto:
     ```
+    python manage.py makemigrations
     python manage.py migrate
-    python manage.py createsuperuser
+    python manage.py install
     ```
 
 6. Ejecuta el servidor local:
@@ -33,5 +42,3 @@
     ```
 
 ¡Listo! Ahora puedes acceder a tu proyecto en `http://localhost:8000`.
-
-Recuerda que cada vez que quieras trabajar en el proyecto, debes activar el entorno virtual ejecutando `source venv/bin/activate` en el directorio del proyecto.
