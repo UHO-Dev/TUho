@@ -15,22 +15,52 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from apps.Plataforma import views
+from plataforma import views
 from django.contrib.auth.decorators import login_required
+from rest_framework import routers
+from .api import NoticiaViewSet
+from usuarios.api import UsuarioViewSet
+from atencion_poblacion.api import AtencionPoblacionViewSet
+from plataforma.views import (
+    TramitesDetailAdmin,
+    TramitesDetailUsuario,
+    TramitesDetailAnonimo,
+)
+
+
+router = routers.DefaultRouter()
+router.register('api/Noticias', NoticiaViewSet,'Noticias')
+router.register('api/Usuarios', UsuarioViewSet,'Usuarios')
+router.register('api/AtencionPoblacion', AtencionPoblacionViewSet,'AtencionPoblacion')
+
+
 
 urlpatterns = [
     path('',(views.Inicio), name="Inicio"),
     path('MisTramites/',login_required (views.MisTramites), name="MisTramites"),
+    path('SolicitudTramite/',views.SolicitudTramite, name="SolicitudTramite"),
     path('InfoPersonal/',login_required (views.InformacionPersonal), name="InfoPersonal"),
-    path('AtencionPoblacion/',login_required (views.AtencionPoblacion), name="AtencionPoblacion"),
     path('Administracion/',login_required (views.Administracion), name="Administracion"),
-    path('Tramites/',login_required (views.Tramites), name="Tramites"),
+    path('TramitesAdmin/',login_required (views.Tramites), name="TramitesAdmin"),
+    path('CambiarEstado/<str:tipo_tramite>/<int:id>/',login_required (views.CambiarEstado), name="CambiarEstado"),
+    path('EliminarTramite/<str:tipo_tramite>/<int:id>/',login_required (views.EliminarTramite), name="EliminarTramite"),
+    path('EliminarTramiteUsuario/<str:tipo_tramite>/<int:id>/',login_required (views.EliminarTramiteUsuario), name="EliminarTramiteUsuario"),
+    path('EliminarTramiteUsuarioAnonimo/<str:tipo_tramite>/<int:id>/',views.EliminarTramiteUsuarioAnonimo, name="EliminarTramiteUsuarioAnonimo"),
     path('Usuarios/',login_required (views.Usuarios), name="Usuarios"),
+    path('InformacionUsuario/<int:id>/',login_required (views.InformacionUsuario), name="InformacionUsuario"),
     path('EliminarUsuario/<int:id>/',login_required (views.EliminarUsuario), name="EliminarUsuario"),
     path('CambiarRol/<int:id>/',login_required (views.CambiarRol), name="CambiarRol"),
-    path('Graficos/',login_required (views.Graficos), name="Graficos"),
     path('NoticiasUsuario/', views.NoticiasUsuario, name="NoticiasUsuario"),
+    path('EditarEmail/',login_required (views.EditarEmail), name="EditarEmail"),
+    path('VisualizarNoticiasAdmin/<int:id>/',login_required (views.VisualizarNoticiasAdmin), name="VisualizarNoticiasAdmin"),
+    path('VisualizarTramiteUsuario/<int:id>/',login_required (views.VisualizarTramiteUsuario), name="VisualizarTramiteUsuario"),
+    path('VisualizarTramiteUsuarioAnonimo/<int:id>/',views.VisualizarTramiteUsuarioAnonimo, name="VisualizarTramiteUsuarioAnonimo"),
+    path('VisualizarNoticiasUsuario/<int:id>/', views.VisualizarNoticiasUsuario, name="VisualizarNoticiasUsuario"),
     path('InstalarModulosPDF/',login_required (views.InstalarModulosPDF), name="InstalarModulosPDF"),
+    path('Configuracion/',login_required (views.Configuracion), name="Configuracion"),
+    path('TramitesDetailAdmin/<int:pk>/',TramitesDetailAdmin.as_view(), name="TramitesDetailAdmin"),
+    path('TramitesDetailUsuario/<int:pk>/',TramitesDetailUsuario.as_view(), name="TramitesDetailUsuario"),
+    path('TramitesDetailAnonimo/<int:pk>/',TramitesDetailAnonimo.as_view(), name="TramitesDetailAnonimo"),
     
     # Grupos
     path('Grupos/',login_required (views.Grupos), name="Grupos"),
@@ -44,3 +74,6 @@ urlpatterns = [
     path('EditarNoticia/<int:id>/',login_required (views.EditarNoticia), name="EditarNoticia"),
     path('EliminarNoticia/<int:id>/',login_required (views.EliminarNoticia), name="EliminarNoticia"),
 ]
+
+
+urlpatterns = urlpatterns + router.urls

@@ -30,12 +30,18 @@
     <div id="bdSidebar"
       class="d-flex flex-column flex-shrink-0 p-3  pt-0 pb-0 text-white offcanvas-md offcanvas-start responsivo"
       style="width: 250px">
-      <a href="#" class="navbar-brand">
+      <a href="{% url "Administracion" %}" class="navbar-brand">
         <img src="{% static 'img/Id UHo-03-white.png' %}" width="200px" height="80px" alt="">
       </a>
       <hr>
       {% if request.user.is_authenticated %}
       <ul class="mynav nav nav-pills flex-column mb-auto">
+        <li class="nav-item mb-1" aria-label="">
+          <a href="#" class="usuario" >
+            <i class="bi bi-person-circle mx-1" style="font-size:1.1rem;"></i>
+             Bienvenido, <strong>{{ user.username }}</strong>
+          </a>
+        </li>
         <li class="nav-item mb-1" aria-label="">
           <a href="{% url 'Inicio' %}" class="active">
             <i class="bx bxs-widget"></i>
@@ -48,11 +54,11 @@
             Noticias
           </a>
         </li>
-        <li class="nav-item mb-1">
-          <a href="#" class="">
+        <li class="nav-item mb-1" aria-label="Notificaciones">
+          <a href="{% url 'Bandeja' %}" class="">
             <i class="bx bx-bell"></i>
             Notificaciones
-            <span class="notification-badge">5</span>
+            <span class="notification-badge">{{notificaciones_count}}</span>
           </a>
         </li>
         <li class="nav-item mb-1" aria-label="Tramite">
@@ -64,7 +70,7 @@
           <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
             <!-- Colocar Nuevos Módulos Aquí -->
             <li class="nav-item mb-1 " aria-label="InicioSD">
-              <a href="#" class="sidebar-link">Secretaría Docente</a>
+              <a href="{% url "Secretaria" %}" class="sidebar-link">Secretaría Docente</a>
             </li>
             <!-- Fin de colocar nuevos módulos aquí -->
           </ul>
@@ -123,10 +129,22 @@
           <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
             <!-- Colocar Nuevos Módulos Aquí -->
             <li class="nav-item mb-1 " aria-label="InicioSD">
-              <a href="#" class="sidebar-link">Secretaría Docente</a>
+              <a href="{% url "Secretaria" %}" class="sidebar-link">Secretaría Docente</a>
             </li>
             <!-- Fin de colocar nuevos módulos aquí -->
           </ul>
+        </li>
+        <li class="nav-item mb-1" aria-label="SolicitudTramite">
+          <a href="{% url 'SolicitudTramite' %}" class="">
+            <i class="bi bi-search mx-1" style="font-size:1rem;"></i>
+            Solicitud de Trámite
+          </a>
+        </li>
+        <li class="nav-item mb-1" aria-label="AtencionPoblacion">
+          <a href="{% url 'AtencionPoblacion' %}" class="">
+            <i class="bx bx-help-circle"></i>
+            Atención a la población
+          </a>
         </li>
         <li class="nav-item mb-1 " aria-label="Login">
           <a href="{% url 'Login' %}" class="">
@@ -158,7 +176,7 @@
         </div>
       </div>
     </div>
-    <div class="bg-light contenedor">
+    <div class="contenedor">
       <div class="p-2 d-md-none d-flex text-white responsivo">
         <a href="#" class="text-white" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar">
           <i class="bx bx-menu"></i>

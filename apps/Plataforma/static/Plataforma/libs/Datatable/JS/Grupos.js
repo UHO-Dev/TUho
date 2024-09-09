@@ -10,7 +10,7 @@ new DataTable('#Grupos', {
     lengthMenu:[10,15,20, 25,50,100],
     language: {
         "processing": "Procesando...",
-        "lengthMenu": "Mostrar _MENU_ trámites",
+        "lengthMenu": "Mostrar _MENU_ grupos",
         "zeroRecords": "No se encontraron resultados",
         "emptyTable": "Ningún dato disponible en esta tabla",
         "infoEmpty": "Mostrando 0 trámites",
@@ -214,7 +214,7 @@ new DataTable('#Grupos', {
                 "info": "Los elementos seleccionados contienen diferentes valores para este registro. Para editar y establecer todos los elementos de este registro con el mismo valor, haga clic o pulse aquí, de lo contrario conservarán sus valores individuales."
             }
         },
-        "info": "Mostrando _START_ de _TOTAL_ trámites",
+        "info": "Mostrando _START_ de _TOTAL_ grupos",
         "stateRestore": {
             "creationModal": {
                 "button": "Crear",

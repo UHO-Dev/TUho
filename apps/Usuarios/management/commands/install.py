@@ -1,10 +1,11 @@
 from typing import Any
 from django.core.management.base import BaseCommand
-from apps.Usuarios.models import Usuario
+from usuarios.models import Usuario
+from plataforma.models import Email
 
 from django.contrib.auth.models import Group
 
-GRUPOS = ["Administración", "Usuario", "Supervisor","Administrador Trámites"]
+GRUPOS = ["Administración", "Usuario", "Supervisor","Administrador Trámites","Gestores de Trámites Posgrado","Gestores de Trámites Pregrado","Administrador de Módulo", "Gestor General SD"]
 
 class Command(BaseCommand):
 
@@ -30,5 +31,14 @@ class Command(BaseCommand):
                 print("Admin creado con exito")
             except Exception as e:
                 print(e)
-
+                
+        email = Email()
+        email.address = "secretariadocenteuho@gmail.com"
+        email.smtp_server = "smtp.gmail.com"
+        email.smtp_port = 465
+        email.smtp_username = "secretariadocenteuho@gmail.com"
+        email.smtp_password = "wxeq mujn uogo e lv v"
+        email.save()
+        
         self.stdout.write("Completado")
+

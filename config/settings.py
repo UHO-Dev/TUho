@@ -10,11 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DOMAIN = "127.0.0.1:8000"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -27,6 +29,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+import sys
+
+# Agregar la carpeta 'apps' al PYTHONPATH
+sys.path.append(os.path.join(BASE_DIR, 'apps'))
 
 # Application definition
 INSTALLED_APPS = [
@@ -36,8 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.Plataforma',
-    'apps.Usuarios',
+    'rest_framework',
+    'plataforma',
+    'usuarios',
+    'atencion_poblacion',
+    'notificaciones',
+    'secretaria_docente',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +73,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'notificaciones.context.notificacionesContext',
+                'config.context.groups_processor'
             ],
         },
     },
@@ -80,6 +92,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Base de Datos postgreSQL
+'''DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'TUho',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST':'127.0.0.1',
+        'DATABASE_PORT':'5432',
+    }
+}'''
 
 
 # Password validation
@@ -118,6 +142,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -126,15 +153,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'Login'
 
-AUTH_USER_MODEL = 'Usuarios.Usuario'
+AUTH_USER_MODEL = 'usuarios.Usuario'
 
 # Email Config
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "kiri05062001@gmail.com"
-EMAIL_HOST_PASSWORD = "pall eymt bkqv wkvs"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+EMAIL_HOST_USER = "secretariadocenteuho@gmail.com"
+EMAIL_HOST_PASSWORD = "wxeq mujn uogo e lv v"
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
 
 ALLOWED_REDIRECT_URLS = ['mailto://']
+
