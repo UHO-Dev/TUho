@@ -28,13 +28,16 @@
     font-weight: 500;
     margin-left:3vw;
     text-shadow: 0 o 10px rgba(0, 0, 0, .2);
+    font-weight: bold !important;
 }
 
 .navbar a {
     text-decoration: none;
 }
 .nav-ii{
-  color: #15468a;
+  color: #15468a; 
+  font-weight: bold !important;
+  
 }
 
 .x{

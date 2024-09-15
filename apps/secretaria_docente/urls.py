@@ -69,8 +69,6 @@ urlpatterns = [
     # PREGRADO INTERNACIONAL
     path('Tramites_Pregrado_Internacional_Create/', Tramites_Pregrado_Internacional_Create, name='Tramites_Pregrado_Internacional_Create'),
     path('Pregrado_Internacional_Legalizacion/', Pregrado_Internacional_Legalizacion.as_view(), name='Pregrado_Internacional_Legalizacion'),
-    
-
 
     # POSGRADO NACIONAL
     path('Tramites_Posgrado_Nacional_Create/', Tramites_Posgrado_Nacional_Create.as_view(), name="Tramites_Posgrado_Nacional_Create"),

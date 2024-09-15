@@ -78,7 +78,7 @@ def Cambiar_Gestor(request, id):
             usuario.groups.add(group)
             return redirect('Gestores')
         else:
-           return render(request, "plataforma/Atención a la Poblacion.html", {'response': 'incorrecto', 'message': 'Rol inválido'})
+           return render(request, "General/cambiar_gestor.html", {'response': 'incorrecto', 'message': 'Rol inválido'})
     else:
         allowed_groups = ["Gestores de Trámites Posgrado", "Gestores de Trámites Pregrado", "Gestor General SD", "Usuario"]
         group_names = list(Group.objects.filter(name__in=allowed_groups).values_list('name', flat=True))
