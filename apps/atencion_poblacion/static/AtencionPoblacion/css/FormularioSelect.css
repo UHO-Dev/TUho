@@ -1,3 +1,16 @@
+:root{
+    --primary: #15468a;
+    --background: #ffffff;
+    
+    --basic_blue: #15468a;
+    --basic_green:#93ba22;
+
+    --blue_osc:#212d57;
+    --blue_osc_w:#3a87ad;
+    --blue_white:#d9edf7;
+    --blue_charlotte:#bce8f1;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -38,7 +51,7 @@ body,input,textarea{
 }
 
 .contact-form{
-    background-color:#4481eb;
+    background-color: #fff;
     position: relative;
     border-radius: 10px 10px 0 0 ;
 }
@@ -52,7 +65,7 @@ form{
 }
 
 .title{
-    color:#4481eb;
+    color:var(--basic_blue);
     font-weight: 500;
     font-size: 1.5rem;
     line-height: 1;
@@ -68,7 +81,7 @@ form{
 .input{
     width: 100%;
     outline: none;
-    border: 2px solid #fafafa;
+    border: 2px solid var(--blue_osc);
     background: none;
     padding: 0.6rem 1.2rem;
     color: #fff;
@@ -121,7 +134,7 @@ textarea.input{
 }
 
 .data-mensaje{
-    border: solid 2px white;
+    border: solid 2px #212d57;
     border-radius: 4px;
     padding-left: 10px;
     padding-right: 5px;
@@ -129,7 +142,7 @@ textarea.input{
     padding-bottom: 2px;
     width: 100%;
     height: 200px;
-    color: white;
+    color: #212d57;
     overflow-y: scroll;
 }
 
@@ -144,7 +157,7 @@ textarea.input{
     left: 15px;
     transform: translateY(-50%);
     padding: 0 0.4rem;
-    color: #fafafa;
+    color: #212d57;
     font-size: 0.9rem;
     font-weight: 400;
     pointer-events: none;
@@ -164,9 +177,9 @@ textarea.input{
 	width: 50%;
     padding: 0.6rem 1.3rem;
     background-color: #fff;
-    border: 2px solid #fafafa;
+    border: 2px solid #212d57;
     font-size: 1rem;
-    color: #4481eb;
+    color: #212d57;
     line-height: 1;
     border-radius: 25px;
     outline: none;
@@ -180,7 +193,7 @@ textarea.input{
 }
 
 .btn1:hover{
-    background-color: transparent;
+    background-color: #212d57;
     color: #fff;
 }
 
@@ -204,7 +217,7 @@ textarea.input{
     opacity: 0;
     transition: .3s;
     height: 5px;
-    background-color:#4481eb;
+    background-color:#fff;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -233,7 +246,7 @@ textarea.input{
 
 .information i{
     font-size: 28px;
-    color:#4481eb;
+    color:#212d57;
 }
 
 .contact-info{
@@ -242,7 +255,7 @@ textarea.input{
 }
 
 .contact-info .title{
-    color: #4481eb;
+    color: #212d57;
 }
 
 .text{
@@ -265,7 +278,7 @@ textarea.input{
 
 .info i{
     font-size: 30px;
-    color:#4481eb;
+    color:#212d57;
     margin-right: 0.7rem;
 
 }
@@ -382,8 +395,8 @@ textarea.input{
     display: none;
     padding: 5px;
     max-height: 100px;
-    border: solid 2px #fff;
-    color: #fff;
+    border: solid 2px #212d57;
+    color: #212d57;
     border-top: none;
     border-radius: 0 0 25px 25px;
     transform: translateY(-18px);
@@ -395,6 +408,8 @@ textarea.input{
 .input-container.select-municipio.focused ~ .select-options {
     display: flex;
     flex-direction: column;
+    border: 2px solid #212d57;
+    color: #212d57;
 }
 
 .element {
@@ -404,9 +419,8 @@ textarea.input{
 }
 
 .element:hover {
-    background: gray;
+    background: #212d57;
     color: white;
-    
 }
 
 .input.selector {
@@ -414,6 +428,7 @@ textarea.input{
     font-family: sans-serif;
     font-weight: 700;
     transition: .0s;
+    color: #212d57;
 }
 
 .input-container.select-municipio.focused .input.selector {
@@ -431,8 +446,8 @@ textarea.input{
     display: none;
     padding: 5px;
     max-height: 100px;
-    border: solid 2px #fff;
-    color: #fff;
+    border: solid 2px #212d57;
+    color: #212d57;
     border-top: none;
     border-radius: 0 0 25px 25px;
     transform: translateY(-18px);
@@ -455,7 +470,7 @@ textarea.input{
 
 .input-container.select-consulta.focused .input.selector {
     height: 2rem;
-    border: solid 2px white;
+    border: solid 2px #212d57;
     border-bottom: none;
     border-radius: 25px 25px 0 0;
 }

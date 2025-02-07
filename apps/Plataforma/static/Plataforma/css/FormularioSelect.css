@@ -35,7 +35,7 @@ body,input,textarea{
 
 
 .contact-form{
-    background-color:#4481eb;
+    background-color:#fff;
     position: relative    ;
 }
 
@@ -45,7 +45,7 @@ body,input,textarea{
     position: absolute;
     width: 26px;
     height: 26px;
-    background-color: #4481eb;
+    background-color: #fff;
     transform: rotate(45deg);
     top: 50px;
     left:-13px;
@@ -59,7 +59,7 @@ form{
 }
 
 .title{
-    color:#fff;
+    color:#212d57;
     font-weight: 500;
     font-size: 1.5rem;
     line-height: 1;
@@ -74,10 +74,10 @@ form{
 .input{
     width: 100%;
     outline: none;
-    border: 2px solid #fafafa;
+    border: 2px solid #212d57;
     background: none;
     padding: 0.6rem 1.2rem;
-    color: #fff;
+    color: #212d57;
     font-weight: 500;
     font-size: 0.95rem;
     letter-spacing: 0.5px;
@@ -107,7 +107,7 @@ textarea.input{
     left: 15px;
     transform: translateY(-50%);
     padding: 0 0.4rem;
-    color: #fafafa;
+    color: #212d57;
     font-size: 0.9rem;
     font-weight: 400;
     pointer-events: none;
@@ -127,9 +127,9 @@ textarea.input{
 	width: 100%;
     padding: 0.6rem 1.3rem;
     background-color: #fff;
-    border: 2px solid #fafafa;
+    border: 2px solid #212d57;
     font-size: 1rem;
-    color: #4481eb;
+    color: #212d57;
     line-height: 1;
     border-radius: 25px;
     outline: none;
@@ -143,7 +143,7 @@ textarea.input{
 }
 
 .btn1:hover{
-    background-color: transparent;
+    background-color: #212d57;
     color: #fff;
 }
 
@@ -167,7 +167,7 @@ textarea.input{
     opacity: 0;
     transition: .3s;
     height: 5px;
-    background-color:#4481eb;
+    background-color:#ffffff;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -196,7 +196,7 @@ textarea.input{
 
 .information i{
     font-size: 28px;
-    color:#4481eb;
+    color:#212d57;
 }
 
 .contact-info{
@@ -205,7 +205,7 @@ textarea.input{
 }
 
 .contact-info .title{
-    color: #4481eb;
+    color: #212d57;
 }
 
 .text{
@@ -228,7 +228,7 @@ textarea.input{
 
 .info i{
     font-size: 30px;
-    color:#4481eb;
+    color:#212d57;
     margin-right: 0.7rem;
 
 }

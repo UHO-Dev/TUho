@@ -118,13 +118,16 @@
             Inicio
           </a>
         </li>
-        <a href="{% url 'BandejaAdmin' %}" class="">
-          <i class="bx bx-bell"></i>
-          Notificaciones
-          <span class="notification-badge">{{notificaciones_count}}</span>
-        </a>
+        
+        <li class="nav-item mb-1" aria-label="Notificaciones">
+          <a href="{% url 'BandejaAdmin' %}" class="">
+            <i class="bx bx-bell"></i>
+            Notificaciones
+            <span class="notification-badge">{{notificaciones_count}}</span>
+          </a>
+        </li>
         <li class="nav-item mb-1" aria-label="Tramites">
-          <a href="{% url 'Tramites' %}" class="">
+          <a href="{% url 'TramitesAdmin' %}" class="">
             <i class="bx bx-file"></i>
             Trámites
           </a>

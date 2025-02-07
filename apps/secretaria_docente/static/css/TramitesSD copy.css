@@ -70,6 +70,7 @@
     background-clip: border-box;
     border: var(--bs-card-border-width) solid var(--bs-card-border-color);
     border-radius: 3px;
+    padding: 1rem 3rem;
 }
 
 label, .form-label {
@@ -227,11 +228,11 @@ textarea .form-control {
 }
 .title-text{
     text-align: center;
-    color: #212d57;
+    color: var(--primary);
 }
 .textt{
     text-align: center;
-    color: white;
+    color: var(--primary);
 }
 
 .boot{
