@@ -83,24 +83,24 @@ def Registrar(request:HttpRequest):
         usuario.username = username
         usuario.email = email
         usuario.token_activacion = str(uuid.uuid4())
-        usuario.is_active = False
+        usuario.is_active = True
         usuario.set_password(password)
 
         try:
-            validation = password_validation.validate_password(password, usuario)
+            #validation = password_validation.validate_password(password, usuario)
             from config import settings
             from django.core.mail import send_mail
-            subject = "Su cuenta debe ser verificada"
+            #subject = "Su cuenta debe ser verificada"
             #El DOMAIN es el servidor y el puerto del sistema se encuentar en el settings por si hay que cambiarlo
-            message = f'Hola acceda a este enlace para validar su cuenta: {settings.DOMAIN}/Usuarios/verify/{usuario.token_activacion}'
-            recipient_list = [usuario.email]
-            send_mail(
-            recipient_list=recipient_list,
-            subject= subject,
-            message=message,
-            from_email="smtp.gmail.com",
-            connection= custom_send_mail(), 
-            )
+            #message = f'Hola acceda a este enlace para validar su cuenta: {settings.DOMAIN}/Usuarios/verify/{usuario.token_activacion}'
+            ##recipient_list = [usuario.email]
+            #send_mail(
+            #recipient_list=recipient_list,
+            #subject= subject,
+            #message=message,
+            #from_email="smtp.gmail.com",
+            #connection= custom_send_mail(), 
+            #)
             usuario.save()
             usuario.groups.add(Group.objects.get(name="Usuario"))
             usuario.save()
@@ -108,7 +108,7 @@ def Registrar(request:HttpRequest):
             return redirect("Login")
         except Exception as e:
             mensajes = []
-            messages.error(request, "Algo salió mal con el envio del correo, por favor intentelo de nuevo")
+            messages.error(request, "Algo salió mal realizando el registro, por favor intentelo de nuevo")
             print(e)
             return render(request, "usuarios/Registrar.html", {'form': form_persist})
 
