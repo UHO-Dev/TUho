@@ -1,0 +1,26 @@
+# filepath: d:\Dev\UHO-Dev\TUho\client\tuhoclient\src\App.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  @apply max-w-5xl mx-auto p-8 text-center;
+}
+
+.logo {
+  @apply h-24 p-6 transition duration-300;
+}
+.logo:hover {
+  @apply filter drop-shadow-lg;
+}
+.logo.react:hover {
+  @apply filter drop-shadow-lg;
+}
+
+.card {
+  @apply p-8;
+}
+
+.read-the-docs {
+  @apply text-gray-500;
+}
