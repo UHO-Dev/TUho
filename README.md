@@ -18,7 +18,7 @@
  Activar:
     En windows:   
     ```    
-    source venv/Scripts/activate.bat
+    venv/Scripts/activate
     ```
     En Linux y Mac:
     ```
