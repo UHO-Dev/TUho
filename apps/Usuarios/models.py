@@ -9,3 +9,6 @@ class Usuario(AbstractUser):
     carnet = models.CharField(max_length=11);
     telefono = models.CharField(max_length = 8);
     direccion = models.TextField();
+
+    def __str__(self):
+        return self.username   

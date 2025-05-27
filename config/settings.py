@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'atencion_poblacion',
     'notificaciones',
     'secretaria_docente',
+    'api',
 ]
 
 MIDDLEWARE = [
