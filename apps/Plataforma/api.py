@@ -6,3 +6,4 @@ class NoticiaViewSet(viewsets.ModelViewSet):
     queryset = Noticias.objects.all()
     permission_classes = [permissions.IsAdminUser]
     serializer_class = NoticiaSerializer
+    

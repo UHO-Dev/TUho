@@ -3,15 +3,13 @@ from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
-from rest_framework import status
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework import generics
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import get_user_model
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.models import Group
-from django.contrib.auth.decorators import login_required
 
 from django.conf import settings
 from django.core.mail import send_mail
@@ -20,13 +18,14 @@ from django.utils.encoding import force_bytes
 
 import uuid
 
-from apps.atencion_poblacion.models import AtencionPoblacion
-from apps.notificaciones.models import Notificacion
-from apps.notificaciones.models import Usuario
-from apps.usuarios.serializers import UsuarioSerializer
-from apps.notificaciones.serializers import NotificacionSerializer
-from apps.usuarios.serializers import AtencionPoblacionSerializer
-from apps.usuarios.serializers import InformacionPersonalSerializer  
+from .models import Area
+from atencion_poblacion.models import AtencionPoblacion
+from notificaciones.models import Notificacion
+from notificaciones.models import Usuario
+from usuarios.serializers import UsuarioSerializer
+from notificaciones.serializers import NotificacionSerializer
+from atencion_poblacion.serializers import AtencionPoblacionSerializer
+from .serializers import AreaSerializer
 
 
 class UsuarioViewSet(viewsets.ModelViewSet):
@@ -43,6 +42,8 @@ class AtencionPoblacionViewSet(viewsets.ModelViewSet):
     serializer_class = AtencionPoblacionSerializer
 
 class Login(APIView):
+    
+    
     def post(self, request):
         if request.user.is_authenticated:
             return Response({"message": "User already authenticated"}, status=status.HTTP_200_OK)
@@ -73,8 +74,9 @@ class Login(APIView):
         else:
             return Response({"response": "incorrecto", "message": "Account information is incorrect or not verified"}, status=status.HTTP_401_UNAUTHORIZED)
         
-@login_required
 class Logout(APIView):
+    permission_classes = [IsAuthenticated]
+    
     def post(self, request):
         if request.user.is_authenticated:
             logout(request)
@@ -117,7 +119,7 @@ class Register(APIView):
         except Exception as e:
             return Response({"message": "Algo salió mal realizando el registro, por favor intente de nuevo."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-@login_required        
+    
 class TokenValidationView(APIView):
     def get(self, request, token):
         try:
@@ -133,8 +135,10 @@ class TokenValidationView(APIView):
         except Exception as e:
             return Response({"message": "Ha ocurrido un error, por favor intente de nuevo."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-@login_required
+
 class PasswordResetRequestView(APIView):
+    permission_classes = [IsAuthenticated] 
+    
     def post(self, request):
         email = request.data.get('email')
         User = get_user_model()
@@ -152,3 +156,9 @@ class PasswordResetRequestView(APIView):
             return Response({"message": "No existe una cuenta con ese email."}, status=status.HTTP_400_BAD_REQUEST)
 
                             
+
+
+class AreaCreateView(generics.ListCreateAPIView):
+    queryset = Area.objects.all()
+    serializer_class = AreaSerializer
+    permission_classes = [IsAdminUser] 

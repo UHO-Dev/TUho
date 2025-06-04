@@ -7,7 +7,6 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 import uuid
 from .choices import consulta_choice, municipality_choice, estado_choice
-from plataforma.models import EstadosTramites
 
 def validate_file_extension(value):
     import os

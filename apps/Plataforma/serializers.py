@@ -5,3 +5,4 @@ class NoticiaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Noticias
         exclude = ['on_create','on_modified']
+        
